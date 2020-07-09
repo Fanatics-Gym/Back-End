@@ -17,7 +17,11 @@ function findBy(filter) {
 }
 
 function add(item) {
-  const [id] = db("items").insert(item);
+  return db("items")
+    .insert(item, "id")
+    .then(([id]) => {
+      return findById(id);
+    });
 }
 
 function findById(id) {

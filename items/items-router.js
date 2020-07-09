@@ -1,15 +1,15 @@
 const router = require("express").Router();
 const Items = require("./items-model");
 const restricted = require("../server/restricted");
+
 router.post("/add", restricted, (req, res) => {
-  let item = req.body;
-  Items.add(item)
-    .then((cb) => {
-      res.status(201).json(cb);
+  Items.add(req.body)
+    .then((item) => {
+      res.status(201).json(item);
     })
     .catch((error) => {
       console.log(error);
-      res.status(500).json({ error: "something went wrong" });
+      res.status(500).json({ message: "Could not create item" });
     });
 });
 
