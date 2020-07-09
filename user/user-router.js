@@ -39,7 +39,7 @@ router.post("/login", (req, res) => {
     });
 });
 
-router.get("/", (res) => {
+router.get("/", (req, res) => {
   Users.find()
     .then((users) => {
       res.json(users);
