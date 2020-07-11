@@ -5,29 +5,29 @@ module.exports = {
   find,
   findBy,
   findById,
-  deleteUser,
+  deleteItem,
 };
 
 function find() {
-  return db("users").select("id", "username");
+  return db("items");
 }
 
 function findBy(filter) {
-  return db("users").where(filter);
+  return db("items").where(filter);
 }
 
-function add(user) {
-  return db("users")
-    .insert(user, "id")
+function add(item) {
+  return db("items")
+    .insert(item, "id")
     .then(([id]) => {
       return findById(id);
     });
 }
 
 function findById(id) {
-  return db("users").where({ id }).first();
+  return db("items").where({ id }).first();
 }
 
-function deleteUser(id) {
+function deleteItem(id) {
   return findById(id).del(id);
 }
