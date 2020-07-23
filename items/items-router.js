@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Items = require("./items-model");
 const restricted = require("../server/restricted");
 
-router.post("/add", restricted, (req, res) => {
+router.post("/add", (req, res) => {
   Items.add(req.body)
     .then((item) => {
       res.status(201).json(item);
@@ -31,6 +31,16 @@ router.get("/", (req, res) => {
     })
     .catch((err) => {
       res.status(500).json({ message: "No items" });
+    });
+});
+
+router.delete("/:id", (req, res) => {
+  Items.deleteItem(req.params.id)
+    .then(() => {
+      res.status(200).json({ message: `Item ${req.body.name} deleted` });
+    })
+    .catch((err) => {
+      res.status(500).json(err);
     });
 });
 
