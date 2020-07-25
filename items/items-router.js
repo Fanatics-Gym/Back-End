@@ -35,9 +35,10 @@ router.get("/", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  Items.deleteItem(req.params.id)
-    .then(() => {
-      res.status(200).json({ message: `Item ${req.body.name} deleted` });
+  const id = req.params.id;
+  Items.deleteItem(id)
+    .then((id) => {
+      res.status(200).json({ message: `Item ${id} deleted` });
     })
     .catch((err) => {
       res.status(500).json(err);
