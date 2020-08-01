@@ -29,5 +29,5 @@ function findById(id) {
 }
 
 function deleteItem(id) {
-  return findById(id).del(id);
+  return findById(id).del();
 }
