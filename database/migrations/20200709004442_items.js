@@ -6,6 +6,7 @@ exports.up = function (knex) {
     items.string("size").notNullable();
     items.integer("stock").notNullable();
     items.string("description");
+    items.string("img");
   });
 };
 
