@@ -34,5 +34,5 @@ function deleteItem(id) {
 }
 
 function updateItem(id, changes) {
-  return db("item").where({ id }).update({ changes });
+  return db("items").where({ id }).update({ changes });
 }
