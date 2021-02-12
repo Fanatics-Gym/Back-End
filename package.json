@@ -19,7 +19,8 @@
     "helmet": "^3.23.3",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.20.15",
-    "pg": "^8.2.2"
+    "pg": "^8.2.2",
+    "stripe": "^8.131.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
