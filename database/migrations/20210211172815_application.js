@@ -1,5 +1,5 @@
 exports.up = function (knex) {
-  return knex.schema.createTable("application", (apply) => {
+  return knex.schema.createTable("applications", (apply) => {
     apply.increments();
     apply.string("first_name").notNullable();
     apply.string("last_name").notNullable();
@@ -22,5 +22,5 @@ exports.up = function (knex) {
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTableIfExists("application");
+  return knex.schema.dropTableIfExists("applications");
 };
