@@ -9,7 +9,7 @@ module.exports = {
 };
 
 function findApplicationById(id) {
-  return db("application").where({ id }).first();
+  return db("applications").where({ id }).first();
 }
 
 function addApplication(app) {
@@ -18,4 +18,16 @@ function addApplication(app) {
     .then(([id]) => {
       return findBy;
     });
+}
+
+function findApplication() {
+  return db("applications");
+}
+
+function deleteApplication(id) {
+  return findApplicationById(id).del();
+}
+
+function updateApplication(id, changes) {
+  return db("applications").where({ id }).update({ changes });
 }
