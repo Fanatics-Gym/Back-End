@@ -11,3 +11,16 @@ router.post("/add", (req, res) => {
       res.status(500).json({ message: "Could not create application" });
     });
 });
+
+router.get("/", (req, res) => {
+  Appl.findApplication("/")
+    .then((appl) => {
+      res.status(201).json(appl);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({ message: "Could not get applications" });
+    });
+});
+
+module.exports = router;
