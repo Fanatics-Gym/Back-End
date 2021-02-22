@@ -13,13 +13,23 @@ router.post("/add", (req, res) => {
 });
 
 router.get("/", (req, res) => {
-  Appl.findApplication("/")
+  Appl.findApplication()
     .then((appl) => {
       res.status(201).json(appl);
     })
     .catch((error) => {
       console.log(error);
       res.status(500).json({ message: "Could not get applications" });
+    });
+});
+
+router.get("/:id", (req, res) => {
+  Appl.findApplicationById(req.params.id)
+    .then((appl) => {
+      res.status(201).json(appl);
+    })
+    .catch((error) => {
+      res.status(500).json({ message: "could not get application by id" });
     });
 });
 
