@@ -33,4 +33,15 @@ router.get("/:id", (req, res) => {
     });
 });
 
+router.delete("/:id", (req, res) => {
+  const id = req.params.id;
+  Appl.deleteApplication(id)
+    .then((appl) => {
+      res.status(201).json(id);
+    })
+    .catch((error) => {
+      res.status(500).json({ message: "could not delete by id" });
+    });
+});
+
 module.exports = router;
