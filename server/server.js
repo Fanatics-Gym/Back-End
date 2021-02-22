@@ -14,6 +14,6 @@ server.use(express.json());
 server.use("/user", userRouter);
 server.use("/items", itemRouter);
 server.use("/checkout", stripeRouter);
-server.use("applications", applicationRouter);
+server.use("/applications", applicationRouter);
 
 module.exports = server;

@@ -16,7 +16,7 @@ function addApplication(app) {
   return db("applications")
     .insert(app, "id")
     .then(([id]) => {
-      return findBy;
+      return findApplicationById(id);
     });
 }
 
