@@ -45,10 +45,9 @@ router.delete("/:id", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  const body = req.body;
   Appl.updateApplication(req.params.id)
     .then((appl) => {
-      res.status(201).json(body);
+      res.status(201).json(appl);
     })
     .catch(() => {
       res.status(500).json({ message: "could not change application" });
