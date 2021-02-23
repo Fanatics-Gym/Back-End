@@ -18,6 +18,7 @@ exports.up = function (knex) {
     apply.string("Em_Last").notNullable();
     apply.string("relation").notNullable();
     apply.string("em_phone").notNullable();
+    apply.boolen("status").default(false);
   });
 };
 
