@@ -29,5 +29,5 @@ function deleteApplication(id) {
 }
 
 function updateApplication(id, changes) {
-  return db("applications").where({ id }).update({ changes });
+  return db("applications").where({ id }).update(changes);
 }
