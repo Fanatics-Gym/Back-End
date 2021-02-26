@@ -14,7 +14,6 @@ exports.seed = function (knex) {
           DOB: "06/21/1997",
           Altphone: "9096389007",
           Drivers_license: "F102321",
-          DLstate: "CA",
           DL_Expiration: "06/21/2022",
           address: "1810 Middle of nowhere",
           city: "lost",
