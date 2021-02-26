@@ -8,7 +8,6 @@ exports.up = function (knex) {
     apply.string("DOB").notNullable();
     apply.string("Altphone").notNullable();
     apply.string("Drivers_license").notNullable();
-    apply.string("DLstate").notNullable();
     apply.string("DL_Expiration").notNullable();
     apply.string("address").notNullable();
     apply.string("city").notNullable();
