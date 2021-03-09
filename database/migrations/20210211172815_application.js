@@ -17,8 +17,11 @@ exports.up = function (knex) {
     apply.string("Em_Last").notNullable();
     apply.string("relation").notNullable();
     apply.string("em_phone").notNullable();
-    apply.boolean("status").notNullable().defaultTo(false);
-    apply.timestamp("created_at").defaultTo(knex.fn.now());
+    apply
+      .enu("status", ["Pending", "Approved", "Rejected", "Completed"])
+      .notNullable()
+      .defaultTo("Pending");
+    apply.timestamps(true, true);
   });
 };
 
