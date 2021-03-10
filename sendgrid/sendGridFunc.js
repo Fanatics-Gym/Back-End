@@ -4,6 +4,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 module.exports = {
   Applied,
   Approved,
+  Rejected,
 };
 
 const Applied = (email) => {
@@ -28,6 +29,19 @@ const Approved = (email) => {
     text:
       "You have been approved for the Fanatics Football League. Follow this link to choose your gear size",
   };
+  sgMail.send(msg).catch((err) => {
+    console.log(err);
+  });
+};
+
+const Rejected = () => {
+  const msg = {
+    to: email,
+    from: process.env.SENDGRID_EMAIL,
+    subject: "Fanatics Football",
+    text: "You have been Rejected from the Fanatics Football League.",
+  };
+
   sgMail.send(msg).catch((err) => {
     console.log(err);
   });
