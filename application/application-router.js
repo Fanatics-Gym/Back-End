@@ -5,7 +5,7 @@ const Appl = require("./application-model");
 router.post("/add", (req, res) => {
   Appl.addApplication(req.body)
     .then((appl) => {
-      sendMail(req.body.email);
+      sendMail.Applied(req.body);
       res.status(201).json(appl);
     })
     .catch((error) => {
