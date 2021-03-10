@@ -1,9 +1,11 @@
 const router = require("express").Router();
+const sendMail = require("../sendgrid/sendGridFunc");
 const Appl = require("./application-model");
 
 router.post("/add", (req, res) => {
   Appl.addApplication(req.body)
     .then((appl) => {
+      sendMail(req.body.email);
       res.status(201).json(appl);
     })
     .catch((error) => {
