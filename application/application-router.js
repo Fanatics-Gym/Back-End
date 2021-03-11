@@ -49,7 +49,13 @@ router.delete("/:id", (req, res) => {
 router.put("/:id", (req, res) => {
   Appl.updateApplication(req.params.id, req.body)
     .then((appl) => {
-      res.status(201).json(req.body);
+      if (req.body.status === "Approved") {
+        sendMail.Approved(req.body);
+        res.status(201).json(req.body);
+      } else if (req.body.status === "Rejected") {
+        sendMail.Rejected(req.body);
+        res.status(201).json(req.body);
+      }
     })
     .catch((error) => {
       console.log(error);
