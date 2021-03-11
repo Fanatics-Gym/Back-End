@@ -10,22 +10,22 @@ module.exports = {
 };
 
 function Applied({ info }) {
-  attachment = fs.readFileSync(PDF.ApplicantInfo(info)).toString("base64");
-  //   console.log(info);
+  // attachment = fs.readFileSync(PDF.ApplicantInfo(info)).toString("base64");
+  console.log(info);
   const msg = {
     to: info.email,
     from: process.env.SENDGRID_EMAIL,
     subject: "Fanatics Football",
     text:
       "Thank you for applying to the Fanatics Football League! We will review your application and get back to you shortly! We have included your information submited as an attachment in a PDF File. ",
-    attachments: [
-      {
-        content: attachment,
-        filename: `${info.first_name} ${info.last_name} Info.pdf`,
-        type: "application/pdf",
-        disposition: "attachment",
-      },
-    ],
+    // attachments: [
+    //   {
+    //     content: attachment,
+    //     filename: `${info.first_name} ${info.last_name} Info.pdf`,
+    //     type: "application/pdf",
+    //     disposition: "attachment",
+    //   },
+    // ],
   };
 
   sgMail.send(msg).catch((err) => {
