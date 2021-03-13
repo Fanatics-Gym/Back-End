@@ -23,6 +23,14 @@ exports.up = function (knex) {
     apply.string("relation").notNullable();
     apply.string("em_phone").notNullable();
     apply
+      .integer("user_id")
+      .unsigned()
+      .defaultTo(null)
+      .references("id")
+      .inTable("users")
+      .onUpdate("CASCADE")
+      .onDelete("CASCADE");
+    apply
       .enu("status", ["Pending", "Approved", "Rejected", "Completed"])
       .notNullable()
       .defaultTo("Pending");
