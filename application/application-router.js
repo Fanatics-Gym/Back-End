@@ -5,7 +5,7 @@ const Appl = require("./application-model");
 router.post("/add", (req, res) => {
   Appl.addApplication(req.body)
     .then((appl) => {
-      sendMail.Applied(req.body);
+      // sendMail.Applied(req.body);
       res.status(201).json(appl);
     })
     .catch((error) => {
@@ -50,10 +50,10 @@ router.put("/:id", (req, res) => {
   Appl.updateApplication(req.params.id, req.body)
     .then((appl) => {
       if (req.body.status === "Approved") {
-        sendMail.Approved(req.body);
+        // sendMail.Approved(req.body);
         res.status(201).json(req.body);
       } else if (req.body.status === "Rejected") {
-        sendMail.Rejected(req.body);
+        // sendMail.Rejected(req.body);
         res.status(201).json(req.body);
       }
     })

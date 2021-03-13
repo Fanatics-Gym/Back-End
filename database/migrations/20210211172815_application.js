@@ -2,6 +2,7 @@ exports.up = function (knex) {
   return knex.schema.createTable("applications", (apply) => {
     apply.increments();
     apply.string("first_name").notNullable();
+    apply.string("mi").notNullable();
     apply.string("last_name").notNullable();
     apply.string("email").notNullable();
     apply.string("phone").notNullable();
@@ -13,10 +14,22 @@ exports.up = function (knex) {
     apply.string("city").notNullable();
     apply.string("address_state").notNullable();
     apply.string("zip").notNullable();
+    apply.string("current_address").notNullable();
+    apply.string("current_city").notNullable();
+    apply.string("current_zip").notNullable();
+    apply.string("current_state").notNullable();
     apply.string("Em_First").notNullable();
     apply.string("Em_Last").notNullable();
     apply.string("relation").notNullable();
     apply.string("em_phone").notNullable();
+    apply
+      .integer("user_id")
+      .unsigned()
+      .defaultTo(null)
+      .references("id")
+      .inTable("users")
+      .onUpdate("CASCADE")
+      .onDelete("CASCADE");
     apply
       .enu("status", ["Pending", "Approved", "Rejected", "Completed"])
       .notNullable()
