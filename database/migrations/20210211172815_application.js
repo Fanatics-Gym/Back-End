@@ -2,6 +2,7 @@ exports.up = function (knex) {
   return knex.schema.createTable("applications", (apply) => {
     apply.increments();
     apply.string("first_name").notNullable();
+    apply.string("mi").notNullable();
     apply.string("last_name").notNullable();
     apply.string("email").notNullable();
     apply.string("phone").notNullable();
