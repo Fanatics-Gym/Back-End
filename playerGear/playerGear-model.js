@@ -7,10 +7,20 @@ module.exports = {
   findGearByPlayer,
 };
 
-function addGear() {}
+function addGear(playerId, payload) {
+  return db("playerGear").join("users", function () {
+    this.on("users.id", "=", "playerGear.player_id")
+      .insert(payload)
+      .where(playerId, payload.playerId);
+  });
+}
 
-function allPlayerGear() {}
+function allPlayerGear() {
+  return db("playerGear");
+}
 
 function editGear() {}
 
-function findGearByPlayer() {}
+function findGearByPlayer(playerId) {
+  return db("playerGear").where("player_id", playerId);
+}
