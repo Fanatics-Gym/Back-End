@@ -22,6 +22,6 @@ function allPlayerGear() {
 
 function editGear() {}
 
-function findGearByPlayer(playerId) {
-  return db("playerGear").where("player_id", playerId);
+function findGearByPlayer(player_id) {
+  return db("playerGear").where({ player_id });
 }
