@@ -8,11 +8,12 @@ module.exports = {
 };
 
 function addGear(playerId, payload) {
-  return db("playerGear").join("users", function () {
-    this.on("users.id", "=", "playerGear.player_id")
-      .insert(payload)
-      .where(playerId, payload.playerId);
-  });
+  return db("playerGear as gear")
+    .join("users", function () {
+      this.on("users.id", "=", "gear.player_id");
+    })
+    .insert(payload)
+    .where(playerId, payload.playerId);
 }
 
 function allPlayerGear() {
