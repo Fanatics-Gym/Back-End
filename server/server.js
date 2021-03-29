@@ -15,5 +15,6 @@ server.use("/user", userRouter);
 server.use("/items", itemRouter);
 server.use("/checkout", stripeRouter);
 server.use("/applications", applicationRouter);
+server.use("/gear");
 
 module.exports = server;
