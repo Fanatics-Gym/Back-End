@@ -8,6 +8,7 @@ const itemRouter = require("../items/items-router");
 const stripeRouter = require("../stripe/stripePayment");
 const applicationRouter = require("../application/application-router");
 const playerGear = require("../playerGear/playerGear-router");
+const stats = require("../stats/stats-router");
 
 server.use(helmet());
 server.use(cors());
@@ -17,5 +18,6 @@ server.use("/items", itemRouter);
 server.use("/checkout", stripeRouter);
 server.use("/applications", applicationRouter);
 server.use("/gear", playerGear);
+server.use("/stats", stats);
 
 module.exports = server;
