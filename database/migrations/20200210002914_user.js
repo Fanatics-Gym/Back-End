@@ -4,7 +4,7 @@ exports.up = function (knex) {
     users.string("username", 255).notNullable().unique();
     users.string("password", 255).notNullable();
     users
-      .enu("userType", ["Admin", "Player", "Asistance"])
+      .enu("userType", ["Admin", "Player", "Asistance", "Pending"])
       .notNullable()
       .defaultTo("Player");
   });
