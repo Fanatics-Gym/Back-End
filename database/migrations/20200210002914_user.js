@@ -6,7 +6,7 @@ exports.up = function (knex) {
     users
       .enu("userType", ["Admin", "Player", "Asistance", "Pending"])
       .notNullable()
-      .defaultTo("Player");
+      .defaultTo("Pending");
   });
 };
 
