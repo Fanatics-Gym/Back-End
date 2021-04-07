@@ -7,6 +7,7 @@ exports.up = function (knex) {
       .enu("userType", ["Admin", "Player", "Asistance", "Pending"])
       .notNullable()
       .defaultTo("Pending");
+    users.integer("appl_id");
   });
 };
 

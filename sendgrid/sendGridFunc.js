@@ -33,13 +33,13 @@ function Applied({ info }) {
   });
 }
 
-function Approved(email) {
+function Approved(email, applID) {
   const msg = {
     to: email,
     from: process.env.SENDGRID_EMAIL,
-    subject: "Fanatics Football",
-    text:
-      "You have been approved for the Fanatics Football League. Follow this link to choose your gear size",
+    subject: "Fanatics Football Accepted",
+    text: `You have been approved for the Fanatics Football League. Click the button to create an account and choose gear`,
+    html: `<a href='http://localhost:3000/new-p-signUp/${applID}'>Click Here</a>`,
   };
   sgMail.send(msg).catch((err) => {
     console.log(err);
@@ -50,7 +50,7 @@ function Rejected(email) {
   const msg = {
     to: email,
     from: process.env.SENDGRID_EMAIL,
-    subject: "Fanatics Football",
+    subject: "Fanatics Football Rejected",
     text: "You have been Rejected from the Fanatics Football League.",
   };
 
