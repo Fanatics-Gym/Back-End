@@ -13,7 +13,9 @@ exports.up = function (knex) {
     table.enu("helmet", ["M", "L", "XL"]);
     table.enu("shoulderPads", ["M", "L", "XL"]);
     table.enu("pants", ["M", "L", "XL"]);
+    table.enu("jeresy", ["M", "L", "XL"]);
     table.boolean("backPlate").defaultTo(false);
+    table.boolean("pickedUp").defaultTo(false);
   });
 };
 
