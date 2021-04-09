@@ -12,4 +12,15 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post("/add", (req, res) => {
+  Stats.addStats(req.body)
+    .then((stats) => {
+      res.status(201).json(stats);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "could not add stats" });
+    });
+});
+
 module.exports = router;
