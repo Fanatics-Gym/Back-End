@@ -10,10 +10,10 @@ exports.up = function (knex) {
       .inTable("users")
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
-    table.integer("touchdowns");
-    table.integer("tackles");
-    table.integer("fumbles");
-    table.integer("Interceptions");
+    table.integer("touchdowns").defaultTo(0);
+    table.integer("tackles").defaultTo(0);
+    table.integer("fumbles").defaultTo(0);
+    table.integer("Interceptions").defaultTo(0);
   });
 };
 
