@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const Users = require("../user/user-model.js");
 const restricted = require("../server/restricted");
 const { jwtSecret } = require("./user-secret");
+const Stats = require("../stats/stats-model");
 
 router.post("/register", (req, res) => {
   let user = req.body;
@@ -12,7 +13,15 @@ router.post("/register", (req, res) => {
 
   Users.add(user)
     .then((saved) => {
-      res.status(201).json(saved);
+      console.log(saved.id);
+      Stats.addStats(saved.id)
+        .then((stats) => {
+          res.status(200).json([stats, saved]);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({ message: "could not get stats" });
+        });
     })
     .catch((error) => {
       console.log(error);
