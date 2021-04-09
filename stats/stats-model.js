@@ -16,7 +16,7 @@ function findStatsById(id) {
 }
 
 function findStatsByPlayerId(playerId) {
-  return db("stats").where("player_id", playerId);
+  return db("stats").where("player_id", playerId).first();
 }
 
 function addStats(stats) {
