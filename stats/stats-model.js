@@ -15,10 +15,14 @@ function findStatsById(id) {
   return db("stats").where({ id }).first();
 }
 
+function findStatsByPlayerId(playerId) {
+  return db("stats").where("player_id", playerId).first();
+}
+
 function addStats(stats) {
   return db("stats")
-    .insert(stats, "id")
-    .then(([id]) => {
-      return findStatsById(id);
+    .insert({ player_id: stats })
+    .then(() => {
+      return findStatsByPlayerId(stats);
     });
 }
