@@ -59,6 +59,17 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/players", (req, res) => {
+  Users.findPlayers()
+    .then((players) => {
+      res.status(200).json(players);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "could not get players" });
+    });
+});
+
 function generateToken(user) {
   const payload = {
     subject: user.id,

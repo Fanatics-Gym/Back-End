@@ -6,6 +6,7 @@ module.exports = {
   findBy,
   findById,
   deleteUser,
+  findPlayers,
 };
 
 function find() {
@@ -30,4 +31,18 @@ function findById(id) {
 
 function deleteUser(id) {
   return findById(id).del(id);
+}
+
+function findPlayers() {
+  return db("users")
+    .join("stats", "users.id", "stats.player_id")
+    .where("userType", "Player")
+    .select(
+      "users.id",
+      "users.username",
+      "stats.fumbles",
+      "stats.tackles",
+      "stats.Interceptions",
+      "stats.touchdowns"
+    );
 }
