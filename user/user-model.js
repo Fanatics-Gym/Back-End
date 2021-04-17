@@ -36,6 +36,7 @@ function deleteUser(id) {
 function findPlayers() {
   return db("users")
     .join("stats", "users.id", "stats.player_id")
+    .join("applications", "users.appl_id", "applications.id")
     .where("userType", "Player")
     .select(
       "users.id",
@@ -43,6 +44,8 @@ function findPlayers() {
       "stats.fumbles",
       "stats.tackles",
       "stats.Interceptions",
-      "stats.touchdowns"
+      "stats.touchdowns",
+      "applications.first_name",
+      "applications.last_name"
     );
 }
