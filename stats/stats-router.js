@@ -23,4 +23,15 @@ router.post("/add", (req, res) => {
     });
 });
 
+router.get("/:id", (req, res) => {
+  Stats.findStatsById(req.params.id)
+    .then((stats) => {
+      res.status(201).json(stats);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "could not get stats for player" });
+    });
+});
+
 module.exports = router;

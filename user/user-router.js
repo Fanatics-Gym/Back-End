@@ -13,7 +13,6 @@ router.post("/register", (req, res) => {
 
   Users.add(user)
     .then((saved) => {
-      console.log(saved.id);
       Stats.addStats(saved.id)
         .then((stats) => {
           res.status(200).json([stats, saved]);
@@ -56,6 +55,17 @@ router.get("/", (req, res) => {
     .catch((err) => {
       console.log(err);
       res.status(500).json({ message: "failed to get users" });
+    });
+});
+
+router.get("/players", (req, res) => {
+  Users.findPlayers()
+    .then((players) => {
+      res.status(200).json(players);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "could not get players" });
     });
 });
 
