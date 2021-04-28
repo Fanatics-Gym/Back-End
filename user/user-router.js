@@ -13,7 +13,6 @@ router.post("/register", (req, res) => {
 
   Users.add(user)
     .then((saved) => {
-      console.log(saved.id);
       Stats.addStats(saved.id)
         .then((stats) => {
           res.status(200).json([stats, saved]);
