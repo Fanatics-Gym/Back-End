@@ -4,7 +4,7 @@ const PickUp = require("./pickUpGear-model");
 router.get("/", (req, res) => {
   PickUp.allDates()
     .then((dates) => {
-      res.status(200).json(gear);
+      res.status(200).json(dates);
     })
     .catch((err) => {
       res.status(500).json({ message: "could not get dates for pick up" });
@@ -19,6 +19,7 @@ router.post("/addDate", (req, res) => {
     })
     .catch((err) => {
       res.status(500).json({ message: "could not add date to pick up" });
+      console.log(err);
     });
 });
 
