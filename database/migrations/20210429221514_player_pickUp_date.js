@@ -12,6 +12,7 @@ exports.up = function (knex) {
     table.string("first_name");
     table.string("last_name");
     table.boolean("pickedUp").defaultTo(false);
+    table.timestamp("Submitted").defaultTo(knex.fn.now());
   });
 };
 
