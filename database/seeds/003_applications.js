@@ -8,6 +8,7 @@ exports.seed = function (knex) {
         {
           id: 1,
           first_name: "Jarrod",
+          mi: "P",
           last_name: "Skahill",
           email: "test@email.com",
           phone: "8888888888",
@@ -23,6 +24,10 @@ exports.seed = function (knex) {
           Em_Last: "thedude",
           relation: "none",
           em_phone: "911",
+          current_address: "No where",
+          current_city: "Pomona",
+          current_zip: "91774",
+          current_state: "CA",
         },
       ]);
     });
