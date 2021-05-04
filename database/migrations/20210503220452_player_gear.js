@@ -16,6 +16,14 @@ exports.up = function (knex) {
     table.enu("jeresy", ["M", "L", "XL"]);
     table.boolean("backPlate").defaultTo(false);
     table.boolean("pickedUp").defaultTo(false);
+    table
+      .integer("date_id")
+      .unsigned()
+      .notNullable()
+      .references("id")
+      .inTable("pickUpDate")
+      .onUpdate("CASCADE")
+      .onDelete("CASCADE");
   });
 };
 
