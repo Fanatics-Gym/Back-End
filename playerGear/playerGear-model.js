@@ -5,6 +5,7 @@ module.exports = {
   addGear,
   editGear,
   findGearByPlayer,
+  findGearByDate,
 };
 
 function addGear(playerId, payload) {
@@ -24,4 +25,8 @@ function editGear() {}
 
 function findGearByPlayer(player_id) {
   return db("playerGear").where({ player_id });
+}
+
+function findGearByDate(date_id) {
+  return db("playerGear").where("date_id", date_id);
 }
