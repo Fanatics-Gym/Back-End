@@ -23,7 +23,7 @@ router.post("/addDate", (req, res) => {
     });
 });
 
-router.get("/playersPickUp", (req, res) => {
+router.get("/playersPickUp/:id", (req, res) => {
   PickUp.findPlayersWithDate(req.params.id)
     .then((players) => {
       res.status(200).json(players);
