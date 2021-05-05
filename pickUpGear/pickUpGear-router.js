@@ -23,4 +23,15 @@ router.post("/addDate", (req, res) => {
     });
 });
 
+router.get("/playersPickUp", (req, res) => {
+  PickUp.findPlayersWithDate(req.params.id)
+    .then((players) => {
+      res.status(200).json(players);
+    })
+    .catch((err) => {
+      res.status(500).json({ message: "Could not get players for this date" });
+      console.log(err);
+    });
+});
+
 module.exports = router;
