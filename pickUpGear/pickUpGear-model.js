@@ -5,6 +5,7 @@ module.exports = {
   addDate,
   findDateById,
   findPlayersWithDate,
+  allPlayerGear,
 };
 
 function allDates() {
@@ -28,6 +29,23 @@ function findPlayersWithDate(date_id) {
     .join("playerGear", "pickUpDate.id", "playerGear.date_id")
     .join("applications", "playerGear.player_id", "applications.id")
     .where("playerGear.date_id", date_id)
+    .select(
+      "applications.first_name",
+      "applications.last_name",
+      "playerGear.helmet",
+      "playerGear.shoulderPads",
+      "playerGear.pants",
+      "playerGear.jeresy",
+      "playerGear.backPlate",
+      "playerGear.pickedUp",
+      "pickUpDate.date"
+    );
+}
+
+function allPlayerGear() {
+  return db("pickUpDate")
+    .join("playerGear", "pickUpDate.id", "playerGear.date_id")
+    .join("applications", "playerGear.player_id", "applications.id")
     .select(
       "applications.first_name",
       "applications.last_name",
