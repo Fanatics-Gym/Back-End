@@ -35,7 +35,7 @@ router.get("/playersPickUp/:id", (req, res) => {
 });
 
 router.get("/playersPickUp", (req, res) => {
-  PickUp.findPlayersWithDate()
+  PickUp.allPlayerGear()
     .then((players) => {
       res.status(200).json(players);
     })
