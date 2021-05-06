@@ -14,8 +14,8 @@ exports.up = function (knex) {
     table.enu("shoulderPads", ["M", "L", "XL"]);
     table.enu("pants", ["M", "L", "XL"]);
     table.enu("jeresy", ["M", "L", "XL"]);
-    table.boolean("backPlate").defaultTo(false);
-    table.boolean("pickedUp").defaultTo(false);
+    table.enu("backPlate", ["Yes", "No"]);
+    table.enu("pickedUp", ["Yes", "No"]).defaultTo("No");
     table
       .integer("date_id")
       .unsigned()
