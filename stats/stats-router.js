@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Stats = require("./stats-model");
 
 router.get("/", (req, res) => {
-  Stats.allStats()
+  Stats.statsWithPlayerInfo()
     .then((stats) => {
       res.status(200).json(stats);
     })
