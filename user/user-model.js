@@ -7,6 +7,7 @@ module.exports = {
   findById,
   deleteUser,
   findPlayers,
+  findPlayerById,
 };
 
 function find() {
@@ -47,5 +48,25 @@ function findPlayers() {
       "stats.touchdowns",
       "applications.first_name",
       "applications.last_name"
+    );
+}
+
+function findPlayerById(id) {
+  return db("users")
+    .join("stats", "users.id", "stats.player_id")
+    .join("applications", "users.appl_id", "applications.id")
+    .where("users.id", id)
+    .first()
+    .select(
+      "users.id",
+      "users.username",
+      "users.userType",
+      "stats.fumbles",
+      "stats.tackles",
+      "stats.Interceptions",
+      "stats.touchdowns",
+      "applications.first_name",
+      "applications.last_name",
+      "applications.email"
     );
 }
