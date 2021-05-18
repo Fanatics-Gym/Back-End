@@ -33,3 +33,5 @@ router.post("/add", (req, res) => {
       res.status(500).json({ message: "couldn't create a team" });
     });
 });
+
+module.exports = router;
