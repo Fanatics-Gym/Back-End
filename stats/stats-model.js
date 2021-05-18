@@ -19,11 +19,11 @@ function findStatsByPlayerId(playerId) {
   return db("stats").where("player_id", playerId).first();
 }
 
-function addStats(stats) {
+function addStats(stats_id) {
   return db("stats")
-    .insert({ player_id: stats })
+    .insert({ player_id: stats_id })
     .then(() => {
-      return findStatsByPlayerId(stats);
+      return findStatsByPlayerId(stats_id);
     });
 }
 
