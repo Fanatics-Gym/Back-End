@@ -2,6 +2,10 @@ const db = require("../database/config");
 
 module.exports = { addTeam, allTeams, findTeamById };
 
+function allTeams() {
+  return db("teams");
+}
+
 function findTeamById(id) {
   return db("teams").where({ id }).first();
 }
