@@ -23,4 +23,10 @@ router.get("/:id", (req, res) => {
     });
 });
 
+router.post("/add", (req, res) => {
+  Event.addEvent(req.body).then((event) => {
+    res.status(200).json({ message: "event was added", event });
+  });
+});
+
 module.exports = router;
