@@ -2,28 +2,24 @@ const stripe = require("stripe")(process.env.STRIPE_TEST);
 
 const router = require("express").Router();
 
-router.post("/", async (req, res) => {
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ["card"],
-    line_items: [
-      {
-        price_data: {
-          currency: "usd",
-          product_data: {
-            name: "Stubborn Attachments",
-            images: ["https://i.imgur.com/EHyR2nP.png"],
-          },
-          unit_amount: 2000,
-        },
-        quantity: 1,
-      },
-    ],
-    mode: "payment",
-    success_url: "http://localhost:3000/checkout?success=true",
-    cancel_url: "http://localhost:3000/checkout?canceled=true",
-  });
+const calculateOrderAmount = (items) => {
+  // Replace this constant with a calculation of the order's amount
+  // Calculate the order total on the server to prevent
+  // people from directly manipulating the amount on the client
+  return 2000;
+};
 
-  res.json({ id: session.id });
+router.post("/gear-and-season", async (req, res) => {
+  const { info } = req.body;
+  try {
+    const session = await stripe.paymentIntents.create({
+      amount: calculateOrderAmount(info),
+      currency: "usd",
+    });
+    res.status(200).send(session.client_secret);
+  } catch (err) {
+    res.status(500).json({ statuscode: 500, message: err.message });
+  }
 });
 
 module.exports = router;
