@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/add", (req, res) => {
-  PlayerGear.addGear(req.body.player_id, req.body)
+  PlayerGear.addGear(req.body)
     .then((gear) => {
       res.status(200).json(req.body);
     })
