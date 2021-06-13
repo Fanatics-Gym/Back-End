@@ -8,13 +8,8 @@ module.exports = {
   findGearByDate,
 };
 
-function addGear(playerId, payload) {
-  return db("playerGear as gear")
-    .join("users", function () {
-      this.on("users.id", "=", "gear.player_id");
-    })
-    .insert(payload)
-    .where(playerId, payload.playerId);
+function addGear(payload) {
+  return db("playerGear as gear").insert(payload).returning("*");
 }
 
 function allPlayerGear() {
