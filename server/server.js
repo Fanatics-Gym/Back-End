@@ -11,6 +11,7 @@ const playerGear = require("../playerGear/playerGear-router");
 const stats = require("../stats/stats-router");
 const pickUpRouter = require("../pickUpGear/pickUpGear-router");
 const teamRouter = require("../team/team-router");
+const profileInfoRouter = require("../profileInfo/profileInfo-router");
 
 server.use(helmet());
 server.use(cors());
@@ -23,5 +24,6 @@ server.use("/gear", playerGear);
 server.use("/stats", stats);
 server.use("/pickUp", pickUpRouter);
 server.use("/team", teamRouter);
+server.use("/profile", profileInfoRouter);
 
 module.exports = server;
