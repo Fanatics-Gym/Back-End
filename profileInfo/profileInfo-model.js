@@ -3,6 +3,7 @@ const db = require("../database/config");
 module.exports = {
   allProfiles,
   addProfileInfo,
+  getProfileInfoById,
 };
 
 function allProfiles() {
@@ -11,4 +12,8 @@ function allProfiles() {
 
 function addProfileInfo(payload) {
   return db("profileInfo").insert(payload).returning("*");
+}
+
+function getProfileInfoById(user_id) {
+  return db("profileInfo").where("user_id", id).first();
 }
