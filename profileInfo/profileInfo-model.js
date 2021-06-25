@@ -15,5 +15,5 @@ function addProfileInfo(payload) {
 }
 
 function getProfileInfoById(user_id) {
-  return db("profileInfo").where("user_id", id).first();
+  return db("profileInfo").where("user_id", user_id).first();
 }
