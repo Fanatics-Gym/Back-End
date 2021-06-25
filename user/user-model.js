@@ -55,6 +55,7 @@ function findPlayerById(id) {
   return db("users")
     .join("stats", "users.id", "stats.player_id")
     .join("applications", "users.appl_id", "applications.id")
+    .join("profileInfo", "users.id", "profileInfo.user_id")
     .where("users.id", id)
     .first()
     .select(
@@ -67,6 +68,10 @@ function findPlayerById(id) {
       "stats.touchdowns",
       "applications.first_name",
       "applications.last_name",
-      "applications.email"
+      "applications.email",
+      "profileInfo.bio",
+      "profileInfo.weight",
+      "profileInfo.company",
+      "profileInfo.website"
     );
 }
