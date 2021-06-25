@@ -5,6 +5,7 @@ const Users = require("../user/user-model.js");
 const restricted = require("../server/restricted");
 const { jwtSecret } = require("./user-secret");
 const Stats = require("../stats/stats-model");
+const ProfileInfo = require("../profileInfo/profileInfo-model");
 
 router.post("/register", (req, res) => {
   let user = req.body;
@@ -38,7 +39,16 @@ router.post("/login", (req, res) => {
         const token = generateToken(user);
         Users.findPlayerById(user.id)
           .then((userInfo) => {
-            res.status(200).json({ token, userInfo });
+            ProfileInfo.getProfileInfoById(userInfo.id)
+              .then((profileInfo) => {
+                res.status(200).json({ token, userInfo, profileInfo });
+              })
+              .catch((e) => {
+                console.log(e);
+                res
+                  .status(500)
+                  .json({ message: "could not get profile info by id" });
+              });
           })
           .catch((error) => {
             res.status(500).json(error);
