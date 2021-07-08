@@ -34,4 +34,15 @@ router.post("/add", (req, res) => {
     });
 });
 
+router.delete("/:id", (req, res) => {
+  Team.deleteTeam(req.body.id)
+    .then((team) => {
+      res.status(200).json({ message: "Team was deleted" }, team);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "could not delete this team" });
+    });
+});
+
 module.exports = router;

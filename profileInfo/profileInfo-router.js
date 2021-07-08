@@ -23,6 +23,7 @@ router.post("/add", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const profile = await ProfileInfo.getProfileInfoById(req.body.user_id);
+    res.status(200).json(profile);
   } catch (e) {
     console.log(e);
     res.status(500).json({ message: "could not get this player's info" });
