@@ -12,6 +12,7 @@ const stats = require("../stats/stats-router");
 const pickUpRouter = require("../pickUpGear/pickUpGear-router");
 const teamRouter = require("../team/team-router");
 const profileInfoRouter = require("../profileInfo/profileInfo-router");
+const imgUploadRouter = require("../imgs/img-router");
 
 server.use(helmet());
 server.use(cors());
@@ -25,5 +26,6 @@ server.use("/stats", stats);
 server.use("/pickUp", pickUpRouter);
 server.use("/team", teamRouter);
 server.use("/profile", profileInfoRouter);
+server.use("/upload", imgUploadRouter);
 
 module.exports = server;
