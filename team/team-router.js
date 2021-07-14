@@ -12,6 +12,15 @@ router.get("/", (req, res) => {
     });
 });
 
+router.put("/:id", async (req, res) => {
+  try {
+    const edits = await Team.editTeam(req.params.id, req.body);
+    res.status(200).json({ message: "Updated Team", Changes: edits });
+  } catch (e) {
+    res.status(500).json({ message: "could not update team" });
+  }
+});
+
 router.get("/:id", (req, res) => {
   Team.findTeamById(req.params.id)
     .then((team) => {
