@@ -1,6 +1,13 @@
 const db = require("../database/config");
 
-module.exports = { addTeam, allTeams, findTeamById, deleteTeam };
+module.exports = {
+  addTeam,
+  allTeams,
+  findTeamById,
+  deleteTeam,
+  editTeam,
+  membersByTeamId,
+};
 
 function allTeams() {
   return db("teams");
@@ -20,4 +27,12 @@ function addTeam(team) {
 
 function deleteTeam(id) {
   return findTeamById(id).del();
+}
+
+function editTeam(id, changes) {
+  return db("teams").where("id", id).update({ changes }).returning("*");
+}
+
+function membersByTeamId(id) {
+  return db("team_member").where("team_id", id);
 }
