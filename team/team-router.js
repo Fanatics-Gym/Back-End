@@ -32,6 +32,15 @@ router.get("/:id", (req, res) => {
     });
 });
 
+router.get("roster/:id", async (req, res) => {
+  try {
+    const teamMembers = await Team.membersByTeamId(req.params.id);
+    res.status(200).json(teamMembers);
+  } catch (e) {
+    res.status(500).json({ message: "could not get team roster" });
+  }
+});
+
 router.post("/add", (req, res) => {
   Team.addTeam(req.body)
     .then((team) => {
